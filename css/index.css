@@ -10,6 +10,7 @@
 @import "./elements/paragraph.css";
 @import "./elements/image.css";
 @import "./elements/demo.css";
+@import "./elements/control-inputs.css";
 
 body {
   background-color: var(--color-dark);

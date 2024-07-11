@@ -1,0 +1,28 @@
+{% macro button(id, content, placement) %}
+  <button id="{{ id }}" class="control-btn reg {{ placement }}" aria-label="{{ content }}">
+    <span class="font-k2d-medium">{{ content }}</span>
+  </button>
+{% endmacro %}
+{% macro buttonImportant(id, content, placement) %}
+  <button id="{{ id }}" class="control-btn imp {{ placement }}" aria-label="{{ content }}">
+    <span class="font-k2d-medium">{{ content }}</span>
+  </button>
+{% endmacro %}
+{% macro number(id, default, placement) %}
+  <input id="{{ id }}" type="number" class="font-k2d-medium control-number reg {{ placement }}" value="{{ default }}"/>
+{% endmacro %}
+{% macro checkbox(id, checked, placement, label) %}
+  <div class="control-checkbox reg {{ placement }}">
+    <input id="{{ id }}" type="checkbox" {% if checked %} checked {% endif %}/>
+    <label for="{{ id }}" hidden="hidden">{{ label }}</label>
+    <div class="checkbox-cover">
+      <span class="font-k2d-medium enabled">Disable</span>
+      <span class="font-k2d-medium enabled disabled">Enable</span>
+    </div>
+  </div>
+{% endmacro %}
+{% macro label(id, content, placement) %}
+  <label for="{{ id }}" class="control-label {{ placement }}">
+    <span class="font-k2d-medium">{{ content }}</span>
+  </label>
+{% endmacro %}

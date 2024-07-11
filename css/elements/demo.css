@@ -62,16 +62,19 @@
     .width1,
     .w1 {
       grid-column-end: span 1;
+      width: 111.33px;
     }
 
     .width2,
     .w2 {
       grid-column-end: span 2;
+      width: 226.67;
     }
 
     .width3,
     .w3 {
       grid-column-end: c4;
+      width: 342px;
     }
   }
 }

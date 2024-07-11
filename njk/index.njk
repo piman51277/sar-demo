@@ -18,6 +18,7 @@
     {% from "elements/highlight.njk" import render as highlight %}
     {% from "elements/paragraph.njk" import render as paragraph %}
     {% from "elements/image.njk" import render as image %}
+    {% import "elements/control-inputs.njk" as input %}
     <div class="article-frame">
       {{ title("Article Title", "Article Subtitle") }}
       {{ section("This is a Section Title", "main") }}
@@ -26,7 +27,13 @@
       {{ image("example-img.png", "Image Caption") }}
       <div class="demo">
         <canvas id="demoCanvas"></canvas>
-        <div class="demo-controls"></div>
+        <div class="demo-controls">
+          {{ input.label("chk","Checkbox","r1 c1 w1") }}
+          {{ input.checkbox("chk",false,"r1 c2 w1") }}
+          {{ input.number("num",0,"r2 c2 w1") }}
+          {{ input.button("btn","Button","r2 c1 w1") }}
+          {{ input.buttonImportant("btnImp","Important Button","r3 c1 w2") }}
+        </div>
       </div>
     </div>
   </body>
