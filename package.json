@@ -5,10 +5,10 @@
   "scripts": {
     "build-webpack": "webpack --config webpack.config.js",
     "build-css": "postcss css/*.css --dir dist",
-    "build-njk": "node tools/build.js",
+    "build-njk": "node tools/build.js && cp img/* dist/",
     "build": "concurrently npm:build-webpack npm:build-css npm:build-njk",
     "watch-webpack": "webpack --watch --config webpack.config.js",
-    "watch-css": "postcss css/*.css --dir dist/css --watch",
+    "watch-css": "postcss css/*.css --dir dist --watch",
     "watch-njk": "nodemon",
     "watch": "concurrently npm:watch-webpack npm:watch-css npm:watch-njk",
     "setup": "mkdir -p dist"
