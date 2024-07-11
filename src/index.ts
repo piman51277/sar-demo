@@ -1,13 +1,15 @@
+import { Radar } from "./Radar";
 import { CanvasResizer } from "./util/CanvasResizer";
 import "./util/imgReady";
 import { ready } from "./util/ready";
+import { setInputBounds } from "./util/setInputBounds";
 
 ready(() => {
-  new CanvasResizer(600, 400, "demoCanvas");
-
-  const canvas = document.getElementById("demoCanvas") as HTMLCanvasElement;
-  const ctx = canvas.getContext("2d")!;
-
-  ctx.fillStyle = "red";
-  ctx.fillRect(0, 0, 100, 100);
+  new CanvasResizer(600, 600, "cvs-data-collect");
+  new CanvasResizer(600, 140, "cvs-radar-return");
+  new CanvasResizer(512, 400, "cvs-rtplot");
+  new CanvasResizer(600, 600, "cvs-backproj");
+  setInputBounds("tgt-cnt", 1, 20, 1);
+  setInputBounds("tgt-sze-cnt", 20, 50, 1);
+  new Radar();
 });

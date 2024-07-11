@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Article Title</title>
+    <title>SAR Demo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=K2D:wght@500&display=swap" rel="stylesheet"/>
@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="index.css"/>
     <link rel="icon" href="/assets/favicon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Article Description"/>
-    <meta name="keywords" content="piman, keyword"/>
+    <meta name="description" content="A Demonstration of Synthetic Aperature Radar using Backprojection"/>
+    <meta name="keywords" content="piman, backprojection, sar"/>
   </head>
   <body>
     {% from "elements/title.njk" import render as title %}
@@ -20,19 +20,39 @@
     {% from "elements/image.njk" import render as image %}
     {% import "elements/control-inputs.njk" as input %}
     <div class="article-frame">
-      {{ title("Article Title", "Article Subtitle") }}
-      {{ section("This is a Section Title", "main") }}
-      {{ highlight("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ") }}
-      {{ paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ") }}
-      {{ image("example-img.png", "Image Caption") }}
+      {{ title("SAR Demo", "A Demonstration of Synthetic Aperature Radar using Backprojection") }}
+      {{ highlight("This demonstration isn't intended to teach you how about Synthetic Aperature Radar (SAR), nor how to implement the Backprojection algorithm. Instead, it is meant to help one visualize the various processing steps needed to obtain an image from raw radar data. As such, it is assumed that you already have a basic understanding of SAR, Backprojection, and relevant concepts.") }}
+      {{ section("Data Collection", "datacollect") }}
+      {{ highlight("For the purposes of this demo, we will be using a magical radar mounted on a robot that exists on the 2D plane. As a magical radar, it naturally has some magical properties: It can detect targets in all directions and at any range, even those for which it doesn't have line-of sight. It can also magically eliminate all noise and clutter from the data and get perfect returns from all targets. This is to simplify the demonstration and focus on the processing steps.") }}
+      {{ paragraph("Before we can start analyzing data, we need data to analyze! Use the demo below to set up targets and collect data.") }}
       <div class="demo">
-        <canvas id="demoCanvas"></canvas>
+        <canvas id="cvs-data-collect"></canvas>
+        <canvas id="cvs-radar-return"></canvas>
         <div class="demo-controls">
-          {{ input.label("chk","Checkbox","r1 c1 w1") }}
-          {{ input.checkbox("chk",false,"r1 c2 w1") }}
-          {{ input.number("num",0,"r2 c2 w1") }}
-          {{ input.button("btn","Button","r2 c1 w1") }}
-          {{ input.buttonImportant("btnImp","Important Button","r3 c1 w2") }}
+          {{ input.label("tgt-cnt","# of targets","r1 c1 w1") }}
+          {{ input.number("tgt-cnt", 5, "r1 c2 w2 ") }}
+          {{ input.label("tgt-sze-cnt","target size","r2 c1 w1") }}
+          {{ input.number("tgt-sze-cnt", 20, "r2 c2 w2 ") }}
+          {{ input.button("set-btn","Set Targets","r3 c1 w3") }}
+          {{ input.buttonImportant("collect-start","Start Data Collection","r4 c1 w3") }}
+        </div>
+      </div>
+      {{ section("Range-Time Plot", "rtplot") }}
+      {{ highlight("While it isn't nessesary to generate an RTI plot to generate an image, it can be helpful to visually inspect the data before processing it.") }}
+      {{ paragraph("Below is the range-time plot generated from the radar data. Range is plotted on the x-axis, while sample number is plotted on the y-axis. The intensity of each pixel correlates to the relative strength of the return at that range and sample number.") }}
+      <div class="demo">
+        <canvas id="cvs-rtplot"></canvas>
+      </div>
+      {{ section("Backprojection", "backprojection") }}
+      {{ paragraph("Use the buttons to step through the backprojection process and see how the image is generated from the raw radar data.") }}
+      <div class="demo">
+        <canvas id="cvs-backproj"></canvas>
+        <div class="demo-controls">
+          {{ input.label("outlines-btn","Show Target Outlines","r1 c1 w2") }}
+          {{ input.checkbox("outlines-btn",false,"r1 c3 w1") }}
+          {{ input.button("rst-btn","Reset","r2 c1 w3") }}
+          {{ input.button("ply-btn","Play Animation","r3 c1 w3") }}
+          {{ input.buttonImportant("nxt-btn","Next Sample","r4 c1 w3") }}
         </div>
       </div>
     </div>

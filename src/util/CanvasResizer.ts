@@ -30,10 +30,5 @@ export class CanvasResizer {
     //compute the new height
     const height = width / this.aspectRatio;
     this.canvas.style.height = `${height}px`;
-
-    //set the drawing scale factor
-    const scale = width / targetWidth;
-    const ctx = this.canvas.getContext("2d")!;
-    ctx.scale(scale, scale);
   }
 }
