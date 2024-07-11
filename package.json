@@ -1,7 +1,7 @@
 {
   "name": "sar-demo",
   "version": "1.0.0",
-  "description": "A demonstration of Synthetic Aperature Radar using Backprojection",
+  "description": "Simulation of Synthetic Aperature Radar and Backprojection",
   "scripts": {
     "build-webpack": "webpack --config webpack.config.js",
     "build-css": "postcss css/*.css --dir dist",

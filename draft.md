@@ -1,5 +1,5 @@
 # SAR Demo
-### A Demonstration of Synthetic Aperature Radar using Backprojection
+### Simulation of Synthetic Aperature Radar and Backprojection
 
 > This demonstration isn't intended to teach you how about Synthetic Aperature Radar (SAR), nor how to implement the Backprojection algorithm. Instead, it is meant to help one visualize the various processing steps needed to obtain an image from raw radar data. As such, it is assumed that you already have a basic understanding of SAR, Backprojection, and relevant concepts.
 
