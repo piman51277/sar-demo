@@ -24,6 +24,11 @@
     padding: 2px;
     box-sizing: border-box;
 
+    div,
+    button {
+      height: 20px;
+    }
+
     .row1,
     .r1 {
       grid-row: r1 / r2;
