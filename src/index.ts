@@ -1,3 +1,4 @@
+import { Backprop } from "./Backprop";
 import { Radar } from "./Radar";
 import { CanvasResizer } from "./util/CanvasResizer";
 import "./util/imgReady";
@@ -11,5 +12,6 @@ ready(() => {
   new CanvasResizer(600, 600, "cvs-backproj");
   setInputBounds("tgt-cnt", 1, 20, 1);
   setInputBounds("tgt-sze-cnt", 20, 50, 1);
-  new Radar();
+  const radar = new Radar();
+  new Backprop(radar);
 });

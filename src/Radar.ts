@@ -4,12 +4,12 @@ type Triple = [number, number, number];
 export class Radar {
   private lastMax: number = -1;
   private currentSample: number[] = [];
-  private targets: Triple[] = [];
   private sampleCount = 0;
   private collecting = false;
   private interval: any;
   public data: number[][] = [];
-  static sampleMax = 200;
+  public targets: Triple[] = [];
+  static sampleMax = 400;
 
   constructor() {
     this.data = [];
@@ -21,7 +21,7 @@ export class Radar {
     this.render();
   }
 
-  private computePosition(): Pair {
+  public computePosition(sample: number): Pair {
     //samples Q1 are on top edge
     //samples Q2 are on right edge
     //samples Q3 are on bottom edge
@@ -29,15 +29,16 @@ export class Radar {
     const Q1 = Math.floor(Radar.sampleMax * 0.25);
     const Q2 = Math.floor(Radar.sampleMax * 0.5);
     const Q3 = Math.floor(Radar.sampleMax * 0.75);
+    const interval = 500 / Q1;
 
-    if (this.sampleCount < Q1) {
-      return [50 + this.sampleCount * 10, 50];
-    } else if (this.sampleCount < Q2) {
-      return [550, 50 + (this.sampleCount - Q1) * 10];
-    } else if (this.sampleCount < Q3) {
-      return [550 - (this.sampleCount - Q2) * 10, 550];
+    if (sample < Q1) {
+      return [50 + sample * interval, 50];
+    } else if (sample < Q2) {
+      return [550, 50 + (sample - Q1) * interval];
+    } else if (sample < Q3) {
+      return [550 - (sample - Q2) * interval, 550];
     } else {
-      return [50, 550 - (this.sampleCount - Q3) * 10];
+      return [50, 550 - (sample - Q3) * interval];
     }
   }
 
@@ -66,7 +67,7 @@ export class Radar {
       if (this.sampleCount >= Radar.sampleMax) {
         clearInterval(this.interval);
       }
-    }, 100);
+    }, 50);
   }
 
   private reset(): void {
@@ -88,7 +89,7 @@ export class Radar {
 
     for (let i = 0; i < this.targets.length; i++) {
       const [tX, tY, tR] = this.targets[i];
-      const [rX, rY] = this.computePosition();
+      const [rX, rY] = this.computePosition(this.sampleCount);
 
       const distMid = Math.sqrt((tX - rX) ** 2 + (tY - rY) ** 2);
       const distMidBucket = bID(distMid);
@@ -146,7 +147,7 @@ export class Radar {
     ctx.clearRect(0, 0, visCanvas.width, visCanvas.height);
 
     //get the current position
-    const [rX, rY] = this.computePosition();
+    const [rX, rY] = this.computePosition(this.sampleCount);
     ctx.lineWidth = 2;
     ctx.setLineDash([4, 8]);
 
@@ -191,7 +192,7 @@ export class Radar {
     ctx.fillText("Robot Path", 550, 50);
 
     //draw the robot
-    ctx.fillStyle = "#1E1E1Ecc";
+    ctx.fillStyle = "#1E1E1ECC";
     ctx.fillRect(rX - 10, rY - 10, 20, 20);
   }
 
@@ -282,14 +283,14 @@ export class Radar {
       //render the current line
       for (let i = 0; i < this.currentSample.length; i++) {
         ctx.fillStyle = colorScale(this.currentSample[i]);
-        ctx.fillRect(i * 4, this.sampleCount * 2, 4, 2);
+        ctx.fillRect(i * 4, this.sampleCount, 4, 1);
       }
     } else {
       //re-render with new max
       for (let i = 0; i < this.data.length; i++) {
         for (let j = 0; j < this.data[i].length; j++) {
           ctx.fillStyle = colorScale(this.data[i][j]);
-          ctx.fillRect(j * 4, i * 2, 4, 2);
+          ctx.fillRect(j * 4, i, 4, 1);
         }
       }
     }
