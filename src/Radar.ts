@@ -234,7 +234,7 @@ export class Radar {
     ctx.textBaseline = "top";
     ctx.font = "bold 16px sans-serif";
     ctx.textAlign = "center";
-    ctx.fillText("Radar Return (Relative Strength vs Distance)", 300, 10);
+    ctx.fillText("Radar Return (Distance vs Relative Strength)", 300, 10);
     ctx.font = "bold 12px sans-serif";
     ctx.fillText("Distance (m)", 300, 122);
     ctx.save();
