@@ -23,7 +23,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin: auto;
+  margin: 0 auto 100px auto;
   box-sizing: border-box;
 }
 

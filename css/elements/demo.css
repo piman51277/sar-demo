@@ -21,7 +21,7 @@
     grid-template-rows: [r1] 1fr [r2] 1fr [r3] 1fr [r4] 1fr [r5];
     gap: 4px;
     place-items: stretch stretch;
-    padding: 4px;
+    padding: 2px;
     box-sizing: border-box;
 
     .row1,

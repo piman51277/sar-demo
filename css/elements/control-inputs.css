@@ -6,6 +6,7 @@
   flex-shrink: 0;
   border-radius: 4px;
   box-sizing: border-box;
+  padding: 0px;
 
   span {
     flex: 1 0 0;
