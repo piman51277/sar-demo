@@ -2,14 +2,15 @@
   "name": "article-template",
   "version": "1.0.0",
   "description": "template for article-style projects",
-  "main": "src/index.js",
   "scripts": {
     "build-webpack": "webpack --config webpack.config.js",
     "build-css": "postcss css/*.css --dir dist",
-    "build": "concurrently npm:build-webpack npm:build-css",
+    "build-njk": "node tools/build.js",
+    "build": "concurrently npm:build-webpack npm:build-css npm:build-njk",
     "watch-webpack": "webpack --watch --config webpack.config.js",
     "watch-css": "postcss css/*.css --dir dist/css --watch",
-    "watch": "concurrently npm:watch-webpack npm:watch-css",
+    "watch-njk": "nodemon",
+    "watch": "concurrently npm:watch-webpack npm:watch-css npm:watch-njk",
     "setup": "mkdir -p dist"
   },
   "author": "piman51277",

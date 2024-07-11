@@ -5,7 +5,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const env = process.env.NODE_ENV || "production";
 
 module.exports = {
-  entry: "src/index.ts",
+  entry: "./src/index.ts",
   module: {
     rules: [
       {
@@ -13,7 +13,7 @@ module.exports = {
         use: {
           loader: "ts-loader",
           options: {
-            configFile: path.resolve(__dirname, "tscondif.json"),
+            configFile: path.resolve(__dirname, "tsconfig.json"),
             transpileOnly: true,
           },
         },

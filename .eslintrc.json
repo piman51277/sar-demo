@@ -22,5 +22,5 @@
     "jsdoc/require-jsdoc": "error",
     "jsdoc/no-undefined-types": "off"
   },
-  "ignorePatterns": ["node_modules/", "dist/", "*.config.js"]
+  "ignorePatterns": ["node_modules/", "dist/", "*.config.js", "tools/"]
 }
