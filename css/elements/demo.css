@@ -18,50 +18,60 @@
     background: var(--color-layer2, rgba(255, 255, 255, 0.1));
     display: grid;
     grid-template-columns: [c1] 1fr [c2] 1fr [c3] 1fr [c4];
-    grid-template-rows: [r1] 1fr [r2] 1fr [r4] 1fr [r4] 1fr [r5];
+    grid-template-rows: [r1] 1fr [r2] 1fr [r3] 1fr [r4] 1fr [r5];
     gap: 4px;
     place-items: stretch stretch;
     padding: 4px;
     box-sizing: border-box;
 
-    .row1 {
+    .row1,
+    .r1 {
       grid-row: r1 / r2;
     }
 
-    .row2 {
+    .row2,
+    .r2 {
       grid-row: r2 / r3;
     }
 
-    .row3 {
+    .row3,
+    .r3 {
       grid-row: r3 / r4;
     }
 
-    .row4 {
+    .row4,
+    .r4 {
       grid-row: r4 / r5;
     }
 
-    .col1 {
+    .col1,
+    .c1 {
       grid-column-start: c1;
     }
 
-    .col2 {
+    .col2,
+    .c2 {
       grid-column-start: c2;
     }
 
-    .col3 {
+    .col3,
+    .c3 {
       grid-column-start: c3;
     }
 
-    .width1 {
+    .width1,
+    .w1 {
       grid-column-end: span 1;
     }
 
-    .width2 {
+    .width2,
+    .w2 {
       grid-column-end: span 2;
     }
 
-    .width3 {
-      grid-column-end: span 3;
+    .width3,
+    .w3 {
+      grid-column-end: c4;
     }
   }
 }
