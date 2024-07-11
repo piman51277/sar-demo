@@ -13,6 +13,21 @@
     <meta name="keywords" content="piman, keyword"/>
   </head>
   <body>
-    
+    {% from "elements/title.njk" import render as title %}
+    {% from "elements/section.njk" import render as section %}
+    {% from "elements/highlight.njk" import render as highlight %}
+    {% from "elements/paragraph.njk" import render as paragraph %}
+    {% from "elements/image.njk" import render as image %}
+    <div class="article-frame">
+      {{ title("Article Title", "Article Subtitle") }}
+      {{ section("This is a Section Title", "main") }}
+      {{ highlight("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ") }}
+      {{ paragraph("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ") }}
+      {{ image("example-img.png", "Image Caption") }}
+      <div class="demo">
+        <canvas id="demoCanvas"></canvas>
+        <div class="demo-controls"></div>
+      </div>
+    </div>
   </body>
 </html>

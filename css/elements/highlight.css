@@ -1,0 +1,15 @@
+.highlight {
+  display: flex;
+  padding: 0px 10px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-left: 4px solid var(--color-back, #59729b);
+  background: var(--color-layer2, rgba(255, 255, 255, 0.1));
+
+  p {
+    flex: 1 0 0;
+    color: var(--color-light, #d9dcd6);
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,8 @@
+{% macro render(src,caption) %}
+  <div class="image">
+    <div class="loading-box">
+      <img src="{{ src }}" alt="{{ caption }}"/>
+    </div>
+    <p class="font-k2d-medium">{{ caption }}</p>
+  </div>
+{% endmacro %}

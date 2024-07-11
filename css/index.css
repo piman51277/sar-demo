@@ -1,1 +1,33 @@
+@import "./util/reset.css";
+@import "./util/font-k2d.css";
+@import "./util/palette.css";
+@import "./util/loading-box.css";
 
+/* Elements */
+@import "./elements/title.css";
+@import "./elements/section.css";
+@import "./elements/highlight.css";
+@import "./elements/paragraph.css";
+@import "./elements/image.css";
+@import "./elements/demo.css";
+
+body {
+  background-color: var(--color-dark);
+}
+
+.article-frame {
+  display: flex;
+  width: 100%;
+  padding: 0px 10px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1000px) {
+  .article-frame {
+    width: 1000px;
+  }
+}

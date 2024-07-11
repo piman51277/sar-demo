@@ -13,8 +13,11 @@ async function imgReady(img: HTMLImageElement): Promise<void> {
     img.onload = (): void => resolve(null);
     img.onerror = (err): void => reject(err);
   });
-  console.log("Image loaded");
   img.style.visibility = "visible";
+  const parent = img.parentElement;
+  if (parent) {
+    parent.classList.remove("loading-box");
+  }
 }
 
 //bind events

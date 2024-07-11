@@ -1,0 +1,67 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  align-self: stretch;
+
+  canvas {
+    background: var(--color-light, #d9dcd6);
+    max-width: 100vw;
+    border-radius: 4px;
+  }
+
+  .demo-controls {
+    width: 350px;
+    height: 100px;
+    border-radius: 4px;
+    background: var(--color-layer2, rgba(255, 255, 255, 0.1));
+    display: grid;
+    grid-template-columns: [c1] 1fr [c2] 1fr [c3] 1fr [c4];
+    grid-template-rows: [r1] 1fr [r2] 1fr [r4] 1fr [r4] 1fr [r5];
+    gap: 4px;
+    place-items: stretch stretch;
+    padding: 4px;
+    box-sizing: border-box;
+
+    .row1 {
+      grid-row: r1 / r2;
+    }
+
+    .row2 {
+      grid-row: r2 / r3;
+    }
+
+    .row3 {
+      grid-row: r3 / r4;
+    }
+
+    .row4 {
+      grid-row: r4 / r5;
+    }
+
+    .col1 {
+      grid-column-start: c1;
+    }
+
+    .col2 {
+      grid-column-start: c2;
+    }
+
+    .col3 {
+      grid-column-start: c3;
+    }
+
+    .width1 {
+      grid-column-end: span 1;
+    }
+
+    .width2 {
+      grid-column-end: span 2;
+    }
+
+    .width3 {
+      grid-column-end: span 3;
+    }
+  }
+}

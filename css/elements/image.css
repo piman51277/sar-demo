@@ -1,0 +1,18 @@
+.image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  align-self: stretch;
+
+  img {
+    max-width: 100%;
+    border-radius: 4px;
+    visibility: hidden;
+  }
+
+  p {
+    color: var(--color-light, #d9dcd6);
+    font-size: 12px;
+  }
+}
